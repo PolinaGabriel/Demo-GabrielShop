@@ -1,0 +1,112 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		MaxWidth="800" MaxHeight="450"
+		MinWidth="800" MinHeight="450"
+        x:Class="GabrielTestExam.MainWindow"
+        Title="Каталог">
+	<Grid
+		RowDefinitions="400 50">
+		<ListBox
+			Name="productList"
+			SelectionChanged="CartButtonVisibility"
+			Grid.Row="0"
+			ScrollViewer.VerticalScrollBarVisibility="Visible"
+			ScrollViewer.AllowAutoHide="False"
+			SelectionMode="Multiple">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border
+						Margin="0"
+						HorizontalAlignment="Left"
+						Width="760"
+						BorderBrush="Gray"
+						BorderThickness="1"
+						CornerRadius="0">
+						<Grid
+							ColumnDefinitions="250 250 250">
+							<Image
+								Grid.Column="0"
+								Width="100"
+								Height="100"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								Source="{Binding Photo}">
+							</Image>
+							<WrapPanel
+								Grid.Column="1"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								Orientation="Vertical">
+								<TextBlock
+									Margin="5"
+									FontWeight="Bold"
+									Text="{Binding ProductName}">
+								</TextBlock>
+								<TextBlock
+									Margin="5 0"
+									Text="{Binding ProductManufacturer}">
+								</TextBlock>
+								<TextBlock
+									Margin="5"
+									Text="{Binding ProductDescription}">
+								</TextBlock>
+							</WrapPanel>
+							<WrapPanel
+								Grid.Column="2"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								Orientation="Vertical">
+								<WrapPanel
+									Orientation="Horizontal">
+									<TextBlock
+									Margin="5"
+									Text="{Binding ProductPrice}">
+									</TextBlock>
+									<TextBlock
+										Margin="0 5"
+										Text="руб.">
+									</TextBlock>
+								</WrapPanel>
+								<WrapPanel
+									Orientation="Horizontal">
+									<TextBlock
+									Margin="5 5 0 5"
+									Text="{Binding ProductDiscount}">
+									</TextBlock>
+									<TextBlock
+										Margin="0 5"
+										Text="%">
+									</TextBlock>
+								</WrapPanel>
+							</WrapPanel>
+						</Grid>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button
+			Name="cartButton"
+			Click="GoToCart"
+			Grid.Row="1"
+			HorizontalAlignment="Right"
+			Margin="10"
+			CornerRadius="0"
+			Content="Корзина">
+		</Button>
+		<Line
+			StartPoint="0 0"
+			EndPoint="800 0"
+			Stroke="Black"
+			StrokeThickness="1">
+		</Line>
+		<Line
+			StartPoint="0 400"
+			EndPoint="800 400"
+			Stroke="Black"
+			StrokeThickness="1">
+		</Line>
+	</Grid>
+</Window>
